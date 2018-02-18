@@ -1,8 +1,10 @@
-// inseting all the exports from 'count.js' in 'countArrLen' variable in this
-// case, only 'counter' function gets assigned into 'countArrLen' variable...
-var countArrLen = require('./count');
-var friends = ['Pratik', 'Affan', 'Shihab', 'Mahir'];
+// we are assigning the module.exports object in stuff. So, stuff is now an
+// object and it has the same properties (counter, adder, pi) as module.exports
+// and we can access those properties to get the data sent from 'stuff.js'
+// module...
+var stuff = require('./stuff');
 
-// calling the 'counter' function using 'counArrLen' in this module as we have
-// assigned the 'counter' function in 'counArrLen' in this module...
-console.log(countArrLen(friends));
+//accessing those properties to get the data from stuff.js module...
+console.log(stuff.counter(['Pratik', 'Affan', 'Vote']));
+console.log(stuff.adder(5, 6));
+console.log(stuff.adder(stuff.pi, 5));
