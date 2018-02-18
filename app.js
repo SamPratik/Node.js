@@ -1,1 +1,2 @@
-console.log('Hey ninjas!');
+console.log(__dirname);
+console.log(__filename);
