@@ -1,12 +1,33 @@
-// 'evnets' is a core module which is included in this module to call EventEmitter()
-// constructor...
+// 2 core modules...
 var events = require('events');
-var myEmitter = new events.EventEmitter();
+var util = require('util');
 
-// EventEmitter() is used to listen to custom evnet...
-myEmitter.on('someEvent', function(msg) {
-  console.log(msg);
+// a constructor...
+var Person = function(name) {
+  this.name = name;
+}
+
+// using util.inherits() 'Person' will inherit 'EventEmitter' so that any
+// instatiates(pratik, affan, turag) of 'Person' can have custom event...
+util.inherits(Person, events.EventEmitter);
+
+// objects instantiating 'Person' and setting corresponding name property...
+var pratik = new Person('Pratik');
+var affan = new Person('Affan');
+var turag = new Person('Turag');
+
+// array of instatiates of 'Person'...
+var people = [pratik, affan, turag];
+
+// adding listener for custom events to every instantiates(pratik, affan, turag)
+// of 'Person'...
+people.forEach(function(person) {
+  person.on('speak', function(msg) {
+    console.log(person.name + msg);
+  });
 });
 
-// EventEmitter() is used to fire custom event...
-myEmitter.emit('someEvent', 'This is a message!');
+// firing custom event for every instatiates of 'Person'...
+pratik.emit('speak', ', hey dudes!');
+affan.emit('speak', ', hey dudes!');
+turag.emit('speak', ', hey dudes!');
