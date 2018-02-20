@@ -1,4 +1,5 @@
 var fs = require('fs');
 
-// unlink() method deletes file
-fs.unlink('./deleteme.txt');
+// creating a directory synchronously(that means it will block the next codes
+// from being executed until it creates the stuff folder)...
+fs.mkdirSync('./stuff');
