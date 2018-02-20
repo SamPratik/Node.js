@@ -1,5 +1,5 @@
 var fs = require('fs');
 
-// creating a directory synchronously(that means it will block the next codes
-// from being executed until it creates the stuff folder)...
-fs.mkdirSync('./stuff');
+// removing a directory synchronously(that means it will block the next codes
+// from being executed until it removes the stuff folder)...
+fs.rmdirSync('./stuff');
