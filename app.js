@@ -1,33 +1,10 @@
-// 2 core modules...
-var events = require('events');
-var util = require('util');
+// module required to read and write file...
+var fs = require('fs');
 
-// a constructor...
-var Person = function(name) {
-  this.name = name;
-}
+// readFileSync() is used to read a file synchronously(means it will not move to next
+// code until finishes reading the defined file) and 'utf8' is used to convert the
+// binary datas into real characters...
+var readme = fs.readFileSync('./readme.txt', 'utf8');
 
-// using util.inherits() 'Person' will inherit 'EventEmitter' so that any
-// instatiates(pratik, affan, turag) of 'Person' can have custom event...
-util.inherits(Person, events.EventEmitter);
-
-// objects instantiating 'Person' and setting corresponding name property...
-var pratik = new Person('Pratik');
-var affan = new Person('Affan');
-var turag = new Person('Turag');
-
-// array of instatiates of 'Person'...
-var people = [pratik, affan, turag];
-
-// adding listener for custom events to every instantiates(pratik, affan, turag)
-// of 'Person'...
-people.forEach(function(person) {
-  person.on('speak', function(msg) {
-    console.log(person.name + msg);
-  });
-});
-
-// firing custom event for every instatiates of 'Person'...
-pratik.emit('speak', ', hey dudes!');
-affan.emit('speak', ', hey dudes!');
-turag.emit('speak', ', hey dudes!');
+// logging the content of the defined file...
+console.log(readme);
