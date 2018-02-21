@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Node JS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style media="screen">
+      body {color: white; background-color: skyblue; padding: 30px;}
+      h1 {font-size: 48px; text-align: center; text-transform: uppercase; letter-spacing: 2px;}
+      h2 { text-align: center;}
+    </style>
+  </head>
+  <body>
+    <!--- adding pratials --->
+    <% include partials/nav %>
+    <h1>CONTACT US</h1>
+    <h2>Form for contacting us</h2>
+    <!-- Prepopulating forms with query string values -->
+    <form class="col-md-6 offset-md-3" method="post" action="/contact">
+      <div class="form-group">
+        <label for="">Department:</label>
+        <input name="dept" type="text" class="form-control" value="<%= qs.dept %>" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="">Major:</label>
+        <input name="major" type="text" class="form-control" value="<%= qs.major %>" placeholder="">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-success">
+      </div>
+    </form>
+  </body>
+</html>
