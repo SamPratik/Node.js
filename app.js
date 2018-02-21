@@ -5,32 +5,17 @@ var app = express();
 // package and have to set 'view engile' to 'ejs'.
 app.set('view engine', 'ejs');
 
+// any request which contains '/assets' will be served static files which
+// resides in the directory express.static('directory_name') has mentioned
+// in this case in the 'assets' directory...
+app.use('/assets', express.static('assets'));
+
 app.get('/', function(req, res) {
   res.render('index');
-});
-
-app.get('/contact', function(req, res) {
-  res.render('contact');
-});
-
-// sending URL parameter name and fetching data from database using 'name'. then
-// sending those datas in 'profile.ejs' which must be in 'views' folder...
-app.get('/profile/:name', function(req, res) {
-  // fetching datas from database using 'name'...
-  var data = {
-    age: 23,
-    job: 'Web application and hybrid mobile application developer',
-    hobbies: [
-      'web app development',
-      'hybrid mobile app development',
-      'doing business'
-    ]
-  };
-  // sending those datas including array using 'render()' in 'views/profile.ejs'...
-  res.render('profile', {name: req.params.name, data: data});
 });
 
 app.get('*', function(req, res) {
   res.sendFile(__dirname + '/404.html');
 });
+
 app.listen(3000);
