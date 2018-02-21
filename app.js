@@ -5,12 +5,12 @@ var app = express();
 // package and have to set 'view engile' to 'ejs'.
 app.set('view engine', 'ejs');
 
-app.get('/home', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+app.get('/', function(req, res) {
+  res.render('index');
 });
 
 app.get('/contact', function(req, res) {
-  res.sendFile(__dirname + '/contact.html');
+  res.render('contact');
 });
 
 // sending URL parameter name and fetching data from database using 'name'. then
