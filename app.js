@@ -1,14 +1,16 @@
-// included express package...
 var express = require('express');
 
-// initializes express() so that we can use its functionality...
 var app = express();
 
-// sending a 'id' parameter in the URL and grabbing the parameter and sending to
-// the client...
-app.get('/profile/:id', function(req, res) {
-  res.send('This is the profile of id: ' + req.params.id);
+app.get('/home', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
 
-// setting up the port number...
+app.get('/contact', function(req, res) {
+  res.sendFile(__dirname + '/contact.html');
+});
+
+app.get('*', function(req, res) {
+  res.sendFile(__dirname + '/404.html');
+})
 app.listen(3000);
