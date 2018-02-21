@@ -4,15 +4,10 @@ var express = require('express');
 // initializes express() so that we can use its functionality...
 var app = express();
 
-// if a get request is sent to '/' then a response will be returned but we dont
-// need to set up the content type. express is clever enough to guess the content
-// type and send the response to the client. in this case the response is a string...
-app.get('/', function(req, res) {
-  res.send('This is homepage');
-});
-
-app.get('/contact', function(req, res) {
-  res.send('This is contact page!');
+// sending a 'id' parameter in the URL and grabbing the parameter and sending to
+// the client...
+app.get('/profile/:id', function(req, res) {
+  res.send('This is the profile of id: ' + req.params.id);
 });
 
 // setting up the port number...
