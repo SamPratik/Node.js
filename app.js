@@ -26,7 +26,7 @@ var server = http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.end(JSON.stringify(myObj));
   }
-  // if none of the path matches then we will return 404.html as response... 
+  // if none of the path matches then we will return 404.html as response...
   else {
     res.writeHead(200, {'Content-Type': 'text/html'});
     var myReadStream = fs.createReadStream(__dirname + '/404.html', 'utf8');
