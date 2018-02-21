@@ -17,8 +17,16 @@ app.get('/contact', function(req, res) {
 // sending those datas in 'profile.ejs' which must be in 'views' folder...
 app.get('/profile/:name', function(req, res) {
   // fetching datas from database using 'name'...
-  var data = {age: 0.1, job: 'Kannakati'};
-  // sending those datas using 'render()' in 'views/profile.ejs'...
+  var data = {
+    age: 23,
+    job: 'Web application and hybrid mobile application developer',
+    hobbies: [
+      'web app development',
+      'hybrid mobile app development',
+      'doing business'
+    ]
+  };
+  // sending those datas including array using 'render()' in 'views/profile.ejs'...
   res.render('profile', {name: req.params.name, data: data});
 });
 
